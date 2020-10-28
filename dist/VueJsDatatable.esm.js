@@ -73,6 +73,10 @@ var script = {
 		language: {
 			type: Object,
 			default: null
+		},
+		autocomplete: {
+			type: Boolean,
+			default: false
 		}
 	},
 	data: function data() {
@@ -123,7 +127,13 @@ var script = {
 		        });
 		    },
             "dom": this.dom,
-            "language": this.language
+            "language": this.language,
+            "initComplete": this.autocomplete ? function () {} : function () {
+		        // That's not good solution but it's better than nothing
+                // Without this string you can get login entered in filter field and table starts filtering itself
+                // With this string autocomplete still works but the filter field is empty and table is not filtered
+                $('div.dataTables_filter input').prop('autocomplete', 'off').val('').parent().wrap('<form autocomplete="off" onsubmit="return false">');
+            }
 	    });
 	},
 	methods: {
