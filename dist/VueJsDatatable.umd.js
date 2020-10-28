@@ -73,6 +73,14 @@
 			headers: {
 				type: Object,
 				default: function () {}
+			},
+			dom: {
+				type: String,
+				default: "lfrtip"
+			},
+			language: {
+				type: Object,
+				default: null
 			}
 		},
 		data: function data() {
@@ -122,6 +130,8 @@
 						that.$emit('gaction', args);
 			        });
 			    },
+	            "dom": this.dom,
+	            "language": this.language
 		    });
 		},
 		methods: {
