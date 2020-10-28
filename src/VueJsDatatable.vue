@@ -64,6 +64,14 @@ export default {
 		headers: {
 			type: Object,
 			default: () => {}
+		},
+		dom: {
+			type: String,
+			default: "lfrtip"
+		},
+		language: {
+			type: Object,
+			default: null
 		}
 	},
 	data() {
@@ -111,6 +119,8 @@ export default {
 					that.$emit('gaction', args)
 		        });
 		    },
+            "dom": this.dom,
+            "language": this.language
 	    });
 	},
 	methods: {
