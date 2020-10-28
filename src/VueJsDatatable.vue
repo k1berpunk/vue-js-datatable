@@ -9,7 +9,12 @@
 	</table>
 </template>
 <script>
-global.$ = global.jQuery = require( 'jquery' );
+if (typeof global.$ === "undefined") {
+	global.$ = require( 'jquery' );
+}
+if (typeof global.jQuery === "undefined") {
+	global.jQuery = require( 'jquery' );
+}
 import datatable from 'datatables.net';
 global.$.fn.DataTable = datatable;
 
