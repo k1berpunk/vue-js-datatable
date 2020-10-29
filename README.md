@@ -90,6 +90,10 @@ import VueJsDatatable from '@parthfaladu/vue-js-datatable';
 | serverSide            | `Boolean`  | true           | Feature control DataTables' server-side processing mode
 | headers               | `Object`   | {}             | Ajax request headers
 | order                 | `Array`    | []             | Initial order (sort) to apply to the table
+| dom                   | `String`   | 'lfrtip'       | Set layout for table, pagination, info, etc. [docs](https://datatables.net/reference/option/dom)
+| language              | `Object`   | null           | Set own titles, placeholders, etc. [docs](https://datatables.net/reference/option/language)
+| autocomplete          | `Boolean`  | false          | This feature can disable (false) or keep enabled (true) default browser autocomplete feature on table's filter field
+| data                  | `Object`   | {}             | Ajax request additional data, can be used for custom filter feature [docs](https://datatables.net/reference/option/ajax.data)
 
 
 ### Events
