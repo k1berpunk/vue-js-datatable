@@ -76,6 +76,10 @@ export default {
 		autocomplete: {
 			type: Boolean,
 			default: false
+		},
+		data: {
+			type: Object,
+			default: {}
 		}
 	},
 	data() {
@@ -104,7 +108,10 @@ export default {
 							xhr.setRequestHeader(key, this.headers[key])
 						}
 					}
-		         }
+		         },
+                "data": (tableData) => {
+                    return Object.assign(tableData, this.data);
+                }
 		    },
 	      	"columns": this.columns,
 	      	"drawCallback":function(setting){

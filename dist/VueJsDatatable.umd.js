@@ -85,6 +85,10 @@
 			autocomplete: {
 				type: Boolean,
 				default: false
+			},
+			data: {
+				type: Object,
+				default: {}
 			}
 		},
 		data: function data() {
@@ -115,7 +119,10 @@
 								xhr.setRequestHeader(key, this$1.headers[key]);
 							}
 						}
-			         }
+			         },
+	                "data": function (tableData) {
+	                    return Object.assign(tableData, this$1.data);
+	                }
 			    },
 		      	"columns": this.columns,
 		      	"drawCallback":function(setting){

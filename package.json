@@ -1,6 +1,6 @@
 {
   "name": "@parthfaladu/vue-js-datatable",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "author": "Parth Faladu",
   "description": "A Vue.js wrapper component for jquery datatable.",
   "license": "MIT",
