@@ -101,3 +101,40 @@ import VueJsDatatable from '@parthfaladu/vue-js-datatable';
 | Name     | Description               |
 | -------- | -------------------------------------------------------------------------------------------------- |
 | gaction  |  In button define `data-g-action='view'` attribute and on button click this event will be emitted  |
+
+### API
+
+You can force the table to fetch data from server:
+```html
+<VueJsDatatable :url="url" type="post" :columns="columns" @gaction="onAction" ref="myTable">
+    <th>ID</th>
+    <th>name</th>
+    <th>City</th>
+</VueJsDatatable>
+<button type="button" @click="updateTable">Fetch new data</button>
+...
+<script>
+import VueJsDatatable from '@parthfaladu/vue-js-datatable';
+...
+  components: {
+	VueJsDatatable,
+  },
+  data() {
+    return {
+        columns: [
+          {data:'id', name:'id' , width:"100px"},
+          {data:'name', name:'name' , width:"300px"},
+          {data:'city', name:'city' , width:"200px"},
+	],
+	url: 'https://example.com/api/v1/get/user',
+    }
+  },
+  ...
+  methods: {
+    updateTable() {
+        this.$refs.myTable.update();
+    }
+  }
+...
+</script>
+```

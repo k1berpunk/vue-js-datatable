@@ -16,9 +16,11 @@ if (typeof global.jQuery === "undefined") {
 	global.jQuery = require( 'jquery' );
 }
 import datatable from 'datatables.net';
-global.$.fn.DataTable = datatable;
+if (typeof global.$.fn.DataTable === "undefined") {
+    global.$.fn.DataTable = datatable;
+}
 
-export default {    
+export default {
 	name: 'VueJsDatatable',
 	props: {
 		columns: {
@@ -27,7 +29,7 @@ export default {
 		},
 		url: {
 			type: String,
-			default: null	
+			default: null
 		},
 		type: {
 			type: String,
@@ -79,7 +81,7 @@ export default {
 		},
 		data: {
 			type: Object,
-			default: {}
+			default: () => {}
 		}
 	},
 	data() {
@@ -117,11 +119,11 @@ export default {
 	      	"drawCallback":function(setting){
 		        $('td [data-g-action]').click(function(e){
 		            e.preventDefault();
-		            
+
 		            var action = $(this).attr('data-g-action');
-		            
+
 		            var actionData = $(this).attr('data-g-actiondata');
-		            
+
 		            var args = {
 		            	action: action,
 		            	data: actionData
@@ -143,6 +145,9 @@ export default {
 	methods: {
 		reload(url) {
 			this.datatable.ajax.url(url).load();
+		},
+		update() {
+			this.datatable.ajax.reload();
 		},
 		draw() {
 			this.datatable.draw();
