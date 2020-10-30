@@ -17,9 +17,11 @@ if (typeof global.$ === "undefined") {
 if (typeof global.jQuery === "undefined") {
 	global.jQuery = require( 'jquery' );
 }
-global.$.fn.DataTable = datatable;
+if (typeof global.$.fn.DataTable === "undefined") {
+    global.$.fn.DataTable = datatable;
+}
 
-var script = {    
+var script = {
 	name: 'VueJsDatatable',
 	props: {
 		columns: {
@@ -28,7 +30,7 @@ var script = {
 		},
 		url: {
 			type: String,
-			default: null	
+			default: null
 		},
 		type: {
 			type: String,
@@ -80,7 +82,7 @@ var script = {
 		},
 		data: {
 			type: Object,
-			default: {}
+			default: function () {}
 		}
 	},
 	data: function data() {
@@ -120,11 +122,11 @@ var script = {
 	      	"drawCallback":function(setting){
 		        $('td [data-g-action]').click(function(e){
 		            e.preventDefault();
-		            
+
 		            var action = $(this).attr('data-g-action');
-		            
+
 		            var actionData = $(this).attr('data-g-actiondata');
-		            
+
 		            var args = {
 		            	action: action,
 		            	data: actionData
@@ -146,6 +148,9 @@ var script = {
 	methods: {
 		reload: function reload(url) {
 			this.datatable.ajax.url(url).load();
+		},
+		update: function update() {
+			this.datatable.ajax.reload();
 		},
 		draw: function draw() {
 			this.datatable.draw();
