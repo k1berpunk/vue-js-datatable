@@ -55,6 +55,10 @@ export default {
             type: Boolean,
             default: true
         },
+    pageLength: {
+            type: Number,
+            default: 10
+        },
         ordering: {
             type: Boolean,
             default: true
@@ -93,6 +97,7 @@ export default {
 		var that = this;
 		this.datatable = $(this.$el).DataTable({
 		    "paging": this.paging,
+		    "pageLength": this.pageLength,
 		    "lengthChange": this.lengthChange,
 		    "searching": this.searching,
 		    "ordering": this.ordering,
